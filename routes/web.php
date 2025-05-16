@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Volt::route('/', 'home')
-	->middleware(['auth', 'verified'])
 	->name('home');
 
 Volt::route('profile', 'users.profile')
