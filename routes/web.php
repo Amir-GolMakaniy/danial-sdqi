@@ -2,12 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use function Pest\Laravel\artisan;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/1', function () {
+	artisan('migrate:fresh');
+	artisan('db:seed');
+});
 
-Route::view('dashboard', 'dashboard')
+Volt::route('/', 'home')
+	->middleware(['auth', 'verified'])
+	->name('home');
+
+Volt::route('profile', 'users.profile')
+	->middleware(['auth', 'verified'])
+	->name('profile');
+
+Volt::route('dashboard', 'users.dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
