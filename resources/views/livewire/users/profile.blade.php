@@ -15,9 +15,9 @@ new class extends Component {
 
 	public function mount()
 	{
-		$this->age = auth()->user()->profile->age;
-		$this->height = auth()->user()->profile->height;
-		$this->weight = auth()->user()->profile->weight;
+		$this->age = isset(auth()->user()->profile->age);
+		$this->height = isset(auth()->user()->profile->height);
+		$this->weight = isset(auth()->user()->profile->weight);
 	}
 
 	public function save()
