@@ -26,17 +26,19 @@
 
     <flux:spacer/>
 
-    <flux:button
-            x-data="{themes: ['light', 'dark'],index: ['light', 'dark'].indexOf($flux.appearance)}"
-            @click="index = (index + 1) % themes.length; $flux.appearance = themes[index]"
-            class="cursor-pointer ml-4">
-        <template x-if="themes[index] === 'light'">
-            <flux:icon.sun/>
-        </template>
-        <template x-if="themes[index] === 'dark'">
-            <flux:icon.moon/>
-        </template>
-    </flux:button>
+    <div class="hidden lg:flex">
+        <flux:button
+                x-data="{themes: ['light', 'dark'],index: ['light', 'dark'].indexOf($flux.appearance)}"
+                @click="index = (index + 1) % themes.length; $flux.appearance = themes[index]"
+                class="cursor-pointer ml-4">
+            <template x-if="themes[index] === 'light'">
+                <flux:icon.sun/>
+            </template>
+            <template x-if="themes[index] === 'dark'">
+                <flux:icon.moon/>
+            </template>
+        </flux:button>
+    </div>
 
     <!-- Desktop User Menu -->
     @auth
@@ -87,8 +89,9 @@
             </flux:menu>
         </flux:dropdown>
     @endauth
+
     @guest
-        <div class="space-x-2">
+        <div class="space-x-4 flex">
             <flux:button href="{{ route('register') }}">
                 <flux:icon.user-plus/>
             </flux:button>
@@ -120,6 +123,18 @@
     </flux:navlist>
 
     <flux:spacer/>
+
+    <flux:button
+            x-data="{themes: ['light', 'dark'],index: ['light', 'dark'].indexOf($flux.appearance)}"
+            @click="index = (index + 1) % themes.length; $flux.appearance = themes[index]"
+            class="cursor-pointer ml-4">
+        <template x-if="themes[index] === 'light'">
+            <flux:icon.sun/>
+        </template>
+        <template x-if="themes[index] === 'dark'">
+            <flux:icon.moon/>
+        </template>
+    </flux:button>
 </flux:sidebar>
 
 {{ $slot }}
