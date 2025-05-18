@@ -91,15 +91,13 @@
     @endauth
 
     @guest
-        <div class="space-x-4 flex">
-            <flux:button href="{{ route('register') }}">
+        <flux:button href="{{ route('register') }}" class="ml-4">
                 <flux:icon.user-plus/>
             </flux:button>
 
             <flux:button href="{{ route('login') }}">
                 <flux:icon.user-circle/>
             </flux:button>
-        </div>
     @endguest
 </flux:header>
 
